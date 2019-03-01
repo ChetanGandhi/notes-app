@@ -1,0 +1,41 @@
+{
+    "name": "notes",
+    "version": "1.0.0",
+    "scripts": {
+        "clean": "rimraf ../dist/notes-angular",
+        "build": "npm run clean && webpack"
+    },
+    "dependencies": {
+        "@angular/common": "^7.2.6",
+        "@angular/compiler": "^7.2.6",
+        "@angular/compiler-cli": "^7.2.6",
+        "@angular/core": "^7.2.6",
+        "@angular/platform-browser": "^7.2.6",
+        "@angular/platform-browser-dynamic": "^7.2.6",
+        "core-js": "^2.6.5",
+        "rxjs": "^6.4.0",
+        "zone.js": "^0.8.29"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-optimizer": "^0.13.3",
+        "@ngtools/webpack": "^7.3.3",
+        "@types/node": "^11.9.5",
+        "angular2-template-loader": "^0.6.2",
+        "copy-webpack-plugin": "^5.0.0",
+        "css-loader": "^2.1.0",
+        "express": "^4.16.4",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.5.0",
+        "node-sass": "^4.11.0",
+        "prettier": "^1.16.4",
+        "rimraf": "^2.6.3",
+        "sass-loader": "^7.1.0",
+        "ts-loader": "^5.3.3",
+        "tslint": "^5.12.1",
+        "tslint-config-standard": "^8.0.1",
+        "typescript": "^3.3.3333",
+        "webpack": "^4.29.5",
+        "webpack-cli": "^3.2.3"
+    }
+}

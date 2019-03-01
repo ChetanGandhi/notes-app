@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noImplicitThis": true,
+        "noUnusedParameters": true,
+        "noEmitOnError": true,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "strictFunctionTypes": true,
+        "typeRoots": ["node_modules/@types"],
+        "moduleResolution": "node",
+        "outDir": "../dist/notes-angular",
+        "sourceMap": true,
+        "lib": ["dom", "es2015"],
+        "module": "es2015",
+        "target": "es5"
+    },
+    "exclude": ["./node_modules"]
+}
