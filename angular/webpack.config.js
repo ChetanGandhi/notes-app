@@ -1,6 +1,5 @@
 const webpack = require("webpack");
 const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const dist = path.join(__dirname, "../dist", "notes-angular");
@@ -47,7 +46,15 @@ module.exports = {
         rules: [
             {
                 test: /\.html$/,
-                use: "html-loader"
+                use: [
+                    {
+                        loader: "html-loader",
+                        options: {
+                            minimize: false
+                        }
+                    }
+                ],
+                // exclude: /index\.html$/
             },
             {
                 test: /\.scss$/,
