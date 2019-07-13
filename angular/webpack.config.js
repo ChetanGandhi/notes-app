@@ -11,6 +11,7 @@ module.exports = {
     entry: {
         polyfills: "./src/core/polyfills.ts",
         app: "./src/core/index.ts",
+        materialize: "./src/resources/scss/materialize/materialize.scss",
         style: "./src/resources/scss/index.scss"
     },
     output: {
@@ -53,7 +54,7 @@ module.exports = {
                             minimize: false
                         }
                     }
-                ],
+                ]
                 // exclude: /index\.html$/
             },
             {

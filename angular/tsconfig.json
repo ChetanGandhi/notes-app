@@ -3,7 +3,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "strictNullChecks": true,
-        "noUnusedLocals": true,
+        "noUnusedLocals": false,
         "noImplicitThis": true,
         "noUnusedParameters": true,
         "noEmitOnError": true,
