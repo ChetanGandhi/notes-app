@@ -8,6 +8,7 @@ import { PaperNoteComponent } from "../components/paperNote/paperNote.component"
 @NgModule({
     imports: [BrowserModule, HttpClientModule],
     declarations: [AppComponent, PaperNoteComponent],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

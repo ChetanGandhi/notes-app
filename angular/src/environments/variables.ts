@@ -1,3 +1,5 @@
 declare var ENV_PRODUCTION: boolean;
 
-export const PRODUCTION = ENV_PRODUCTION;
+export const environment = {
+    production: ENV_PRODUCTION
+};

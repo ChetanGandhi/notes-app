@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const dist = path.join(__dirname, "../dist", "notes-angular");
 
 const htmlWebpackPluginConfig = require("./htmlTemplate.config");
@@ -9,8 +10,7 @@ const htmlWebpackPluginConfig = require("./htmlTemplate.config");
 module.exports = {
     mode: "development",
     entry: {
-        polyfills: "./src/core/polyfills.ts",
-        app: "./src/core/index.ts",
+        app: "./src/index.ts",
         materialize: "./src/resources/scss/materialize/materialize.scss",
         style: "./src/resources/scss/index.scss"
     },
@@ -40,9 +40,7 @@ module.exports = {
         }
     },
     devtool: "source-map",
-    resolve: {
-        extensions: [".js", ".ts"]
-    },
+    resolve: { extensions: [".js", ".ts"] },
     module: {
         rules: [
             {
@@ -55,7 +53,6 @@ module.exports = {
                         }
                     }
                 ]
-                // exclude: /index\.html$/
             },
             {
                 test: /\.scss$/,
@@ -82,11 +79,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)fesm5/, path.resolve("src"), {}),
+        new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
             ENV_PRODUCTION: false
         }),
-        // new CopyPlugin([{ from: "./src/core/index.html", toType: "file" }]),
         new MiniCssExtractPlugin({
             filename: "resources/css/[name].css",
             chunkFilename: "resources/css/[id].css"

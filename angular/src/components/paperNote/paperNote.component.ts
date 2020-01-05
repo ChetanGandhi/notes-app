@@ -6,9 +6,11 @@ import { IPaperNote } from "./paperNote.i";
     templateUrl: "./paperNote.component.html"
 })
 export class PaperNoteComponent implements OnInit {
-    private notes: IPaperNote[];
+    public notes: IPaperNote[];
 
-    constructor() {}
+    constructor() {
+        this.notes = [];
+    }
 
     ngOnInit() {
         this.notes = [
