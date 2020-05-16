@@ -3,9 +3,9 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const dist = path.join(__dirname, "../dist", "notes-angular");
-
 const htmlWebpackPluginConfig = require("./htmlTemplate.config");
+
+const dist = path.join(__dirname, "../dist", "notes-angular");
 
 module.exports = {
     mode: "development",

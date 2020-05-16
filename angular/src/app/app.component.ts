@@ -5,5 +5,7 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
-    public ngOnInit(): void {}
+    public ngOnInit(): void {
+        // TODO: Implement this.
+    }
 }

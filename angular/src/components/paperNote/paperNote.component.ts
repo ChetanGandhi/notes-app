@@ -12,7 +12,7 @@ export class PaperNoteComponent implements OnInit {
         this.notes = [];
     }
 
-    ngOnInit() {
+    public ngOnInit(): void {
         this.notes = [
             {
                 id: "1",

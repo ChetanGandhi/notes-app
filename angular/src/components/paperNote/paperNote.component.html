@@ -1,18 +1,16 @@
 <div class="paper-note-container">
     <h1>Paper Note</h1>
-    <div class=paper-note-list-container>
-        <ul class="paper-note-list">
-            <li *ngFor="let nextNote of notes" class="paper-note-list-item">
-                <div class="paper-note-item">
-                    <label class="paper-note-title paper-note-border-bottom">{{nextNote.title}}</label>
-                    <div class="paper-note-content">
-                        {{nextNote.content}}
-                    </div>
-                    <div class="paper-note-footer">
-                        <button class="paper-note-button">Delete</button>
-                    </div>
+    <div class="paper-note-list-container">
+        <div class="paper-note-list">
+            <div *ngFor="let nextNote of notes" class="paper-note-item">
+                <label class="paper-note-title paper-note-border-bottom">{{ nextNote.title }}</label>
+                <div class="paper-note-content">
+                    {{ nextNote.content }}
                 </div>
-            </li>
-        </ul>
+                <div class="paper-note-footer">
+                    <button class="paper-note-button">Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
