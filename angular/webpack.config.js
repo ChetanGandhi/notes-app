@@ -2,16 +2,18 @@ const webpack = require("webpack");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ProgressPlugin = require("webpack/lib/ProgressPlugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const htmlWebpackPluginConfig = require("./htmlTemplate.config");
+const { AngularCompilerPlugin } = require("@ngtools/webpack");
 
 const dist = path.join(__dirname, "../dist", "notes-angular");
 
 module.exports = {
     mode: "development",
     entry: {
+        polyfills: "./src/polyfills.ts",
         app: "./src/index.ts",
-        materialize: "./src/resources/scss/materialize/materialize.scss",
         style: "./src/resources/scss/index.scss"
     },
     output: {
@@ -74,7 +76,14 @@ module.exports = {
             },
             {
                 test: /\.ts$/,
-                loader: ["ts-loader", "angular2-template-loader"]
+                loader: "@ngtools/webpack"
+            },
+            {
+                // This hides some deprecation warnings that Webpack throws
+                test: /[/\\]@angular[/\\]core[/\\].+\.js$/,
+                parser: {
+                    system: true
+                }
             }
         ]
     },
@@ -83,10 +92,17 @@ module.exports = {
         new webpack.DefinePlugin({
             ENV_PRODUCTION: false
         }),
+        new AngularCompilerPlugin({
+            tsConfigPath: "./tsconfig.json",
+            entryModule: "src/app/app.module#AppModule",
+            sourceMap: true,
+            nameLazyFiles: true
+        }),
         new MiniCssExtractPlugin({
             filename: "resources/css/[name].css",
             chunkFilename: "resources/css/[id].css"
         }),
-        new HtmlWebpackPlugin(htmlWebpackPluginConfig)
+        new HtmlWebpackPlugin(htmlWebpackPluginConfig),
+        new ProgressPlugin()
     ]
 };
