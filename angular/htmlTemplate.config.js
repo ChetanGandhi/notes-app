@@ -2,6 +2,7 @@ module.exports = {
     title: "Notes",
     base: "/",
     template: "index.ejs",
+    scriptLoading: "defer",
     meta: {
         viewport: "width=device-width, initial-scale=1.0",
         "Content-Security-Policy": {
