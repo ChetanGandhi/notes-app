@@ -3,7 +3,6 @@ const express = require("express");
 const config = require("./config.json");
 const app = express();
 
-console.log(config);
 app.use(express.static(config.contentBase || "../dist"));
 
 app.get("/", (req, res) => {
