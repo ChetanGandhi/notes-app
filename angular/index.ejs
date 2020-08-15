@@ -7,9 +7,13 @@
         <!-- CSS will be injected by webpack here -->
     </head>
 
-    <body>
-        <main-app class="app-root">Loading...</main-app>
-
+    <!-- This ensures that the proper theme background is applied to your page. -->
+    <body class="mat-app-background">
+        <main-app class="app-root d-flex flex-fill">
+            <div class="d-flex justify-content-center align-items-center flex-fill">
+                Loading...
+            </div>
+        </main-app>
         <!-- Scripts will be injected by webpack here -->
     </body>
 </html>

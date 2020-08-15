@@ -21,5 +21,6 @@
         "module": "ES2020",
         "target": "ES2020"
     },
-    "exclude": ["./node_modules"]
+    "exclude": ["./node_modules"],
+    "include": ["./**/*.d.ts", "./**/*.ts"]
 }
