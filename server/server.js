@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 app.listen(config.port || 9000, error => {
     if (error) {
         console.log(error);
+    } else {
+        console.log(`Server start at http://localhost:${config.port || 9000}`);
     }
-
-    console.log(`server start at port ${config.port || 9000}`);
 });
