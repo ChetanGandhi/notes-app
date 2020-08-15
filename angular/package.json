@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "build:dev": "webpack -d",
+        "build:dev": "webpack -d --progress",
+        "build:dev:watch": "webpack -d --progress --watch",
         "lint": "eslint . --ext .ts"
     },
     "dependencies": {
