@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    &:focus {
+        outline: none !important;
+    }
 }
 
 html,
@@ -11,7 +15,6 @@ body {
 }
 
 body {
-    font-family: "Avenir", Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 12px;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { IPaperNote } from "./paperNote.i";
+import { IPaperNote } from "./paperNote.component.i";
 
 @Component({
     selector: "paper-note",

@@ -1,5 +1,4 @@
 <div class="paper-note-container">
-    <h1>Paper Note</h1>
     <div class="paper-note-list-container">
         <div class="paper-note-list">
             <div *ngFor="let nextNote of notes" class="paper-note-item">
@@ -8,7 +7,8 @@
                     {{ nextNote.content }}
                 </div>
                 <div class="paper-note-footer">
-                    <button class="paper-note-button">Delete</button>
+                    <button mat-icon-button class="mr-2 my-2"><mat-icon color="primary">edit</mat-icon></button>
+                    <button mat-icon-button class="mr-2 my-2"><mat-icon color="warn">delete</mat-icon></button>
                 </div>
             </div>
         </div>
