@@ -4,7 +4,6 @@ import { PaperNoteThemeService } from "../services/theme/theme.service";
 import { IPaperNoteIconService, ISvgIconDefinition } from "../services/iconService/icon.service.i";
 import { PaperNoteIconService } from "../services/iconService/ion.service";
 import paperNoteLogo from "../resources/logo/paperNoteLogo.svg";
-import template from "./app.component.html";
 
 @Component({
     selector: "main-app",

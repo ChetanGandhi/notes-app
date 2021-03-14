@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const htmlWebpackPluginConfig = require("./htmlTemplate.config");
 const { AngularCompilerPlugin } = require("@ngtools/webpack");
 
-const dist = path.join(__dirname, "../dist", "notes-angular");
+const dist = path.join(__dirname, "dist", "app");
 
 module.exports = {
     mode: "development",
