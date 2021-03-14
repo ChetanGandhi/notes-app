@@ -9,7 +9,7 @@
         "strictNullChecks": true,
         "noUnusedLocals": false,
         "noImplicitThis": true,
-        "noUnusedParameters": true,
+        "noUnusedParameters": false,
         "noEmitOnError": true,
         "strict": true,
         "noImplicitAny": true,
