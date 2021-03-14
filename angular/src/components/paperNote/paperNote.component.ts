@@ -1,5 +1,26 @@
 import { Component, OnInit } from "@angular/core";
-import { IPaperNote } from "./paperNote.component.i";
+
+/**
+ * The paper note.
+ *
+ * @interface IPaperNote
+ */
+export interface IPaperNote {
+    /**
+     * The ID of the note.
+     */
+    id: string;
+
+    /**
+     * The title of the note.
+     */
+    title: string;
+
+    /**
+     * The content of the note.
+     */
+    content?: string;
+}
 
 @Component({
     selector: "paper-note",

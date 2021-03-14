@@ -1,15 +1,15 @@
-<mat-sidenav-container class="example-container" autosize>
-    <mat-sidenav disableClose="true" mode="side" opened="true">
+<div class="example-container">
+    <div>
         <div class="d-flex flex-column overflow-hidden h-100 align-center justify-content-end p-2">
-            <button mat-mini-fab class="mb-2" color="" (click)="onToggleThemeButtonClick()">
-                <mat-icon color="red">invert_colors</mat-icon>
+            <button class="mb-2" (click)="onToggleThemeButtonClick()">
+                <span class="red">invert_colors</span>
             </button>
-            <button mat-mini-fab color="">
-                <mat-icon svgIcon="app-logo" color=""></mat-icon>
+            <button  class="">
+                <span class="app-logo"></span>
             </button>
         </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
+    </div>
+    <div>
         <paper-note class="container"></paper-note>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+    </div>
+</div>

@@ -1,41 +1,19 @@
-import { Component, OnInit, Inject, inject } from "@angular/core";
-import { Theme, IPaperNoteThemeService } from "../services/theme/theme.service.i";
-import { PaperNoteThemeService } from "../services/theme/theme.service";
-import { IPaperNoteIconService, ISvgIconDefinition } from "../services/iconService/icon.service.i";
-import { PaperNoteIconService } from "../services/iconService/ion.service";
-import paperNoteLogo from "../resources/logo/paperNoteLogo.svg";
+import { Component, OnInit, Inject } from "@angular/core";
+import { Theme, IThemeService } from "../services/theme/theme.service";
+import { ThemeService } from "../services/theme/theme.service";
 
 @Component({
     selector: "main-app",
     templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
-    public theme: Theme = Theme.Dark;
-
-    constructor(
-        @Inject(PaperNoteThemeService) private themeService: IPaperNoteThemeService,
-        @Inject(PaperNoteIconService) private iconService: IPaperNoteIconService
-    ) {}
+    constructor(@Inject(ThemeService) private themeService: IThemeService) {}
 
     public ngOnInit(): void {
-        this.iconService.addSvgIcons([{ name: "app-logo", svgPath: paperNoteLogo }]);
-        this.themeService.loadTheme(this.theme);
+        this.themeService.theme = Theme.Dark;
     }
 
     public onToggleThemeButtonClick(): void {
-        switch (this.theme) {
-            case Theme.Light:
-                this.theme = Theme.Dark;
-                break;
-
-            case Theme.Dark:
-                this.theme = Theme.Light;
-                break;
-
-            default:
-                break;
-        }
-
-        this.themeService.loadTheme(this.theme);
+        this.themeService.theme = this.themeService.theme === Theme.Light ? Theme.Dark : Theme.Light;
     }
 }

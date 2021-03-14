@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <title>
-            <%= htmlWebpackPlugin.options.title %>
-        </title>
+        <title><%= htmlWebpackPlugin.options.title %></title>
         <!-- CSS will be injected by webpack here -->
     </head>
 
     <!-- This ensures that the proper theme background is applied to your page. -->
-    <body class="mat-app-background">
-        <main-app class="app-root d-flex flex-fill">
-            <div class="d-flex justify-content-center align-items-center flex-fill">
-                Loading...
-            </div>
+    <body class="bg-gray-100 text-black dark:bg-gray-800 dark:text-white">
+        <main-app class="flex flex-grow h-screen w-screen overflow-hidden">
+            <div class="flex flex-auto justify-center items-center">Loading...</div>
         </main-app>
         <!-- Scripts will be injected by webpack here -->
     </body>

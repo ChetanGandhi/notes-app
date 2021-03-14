@@ -1,5 +1,0 @@
-.theme-dark {
-    $theme: mat-dark-theme($primary-color-palette, $accent-color-palette, $warning-color-palette);
-
-    @include angular-material-theme($theme);
-}

@@ -1,34 +1,36 @@
 import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { OverlayContainer } from "@angular/cdk/overlay";
-import { IPaperNoteThemeService, Theme } from "./theme.service.i";
+
+export const enum Theme {
+    Light = "light",
+    Dark = "dark"
+}
+
+export interface IThemeService {
+    theme: Theme;
+}
 
 @Injectable({
     providedIn: "root"
 })
-export class PaperNoteThemeService implements IPaperNoteThemeService {
-    private _currentTheme: Theme;
+export class ThemeService implements IThemeService {
+    private _currentTheme: Theme = Theme.Light;
 
     constructor(@Inject(DOCUMENT) private document: Document, @Inject(OverlayContainer) private overlayContainer: OverlayContainer) {}
 
-    public currentTheme(): Theme {
+    public get theme(): Theme {
         return this._currentTheme;
     }
 
-    public loadTheme(theme: Theme): void {
-        if (this._currentTheme === theme) {
-            return;
-        }
-
-        const body: HTMLBodyElement = this.document.getElementsByTagName("body").item(0) as HTMLBodyElement;
-
+    public set theme(theme: Theme) {
         if (this._currentTheme) {
-            body.classList.remove(`theme-${this._currentTheme}`);
-            this.overlayContainer.getContainerElement().classList.remove(`theme-${this._currentTheme}`);
+            this.document.documentElement.classList.remove(this._currentTheme);
+            this.overlayContainer.getContainerElement().classList.remove(this._currentTheme);
         }
 
         this._currentTheme = theme;
-        body.classList.add(`theme-${this._currentTheme}`);
-        this.overlayContainer.getContainerElement().classList.add(`theme-${this._currentTheme}`);
+        this.document.documentElement.classList.add(this._currentTheme);
+        this.overlayContainer.getContainerElement().classList.add(this._currentTheme);
     }
 }

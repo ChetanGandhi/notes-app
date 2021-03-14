@@ -11,7 +11,7 @@ module.exports = {
     mode: "development",
     entry: {
         app: "./src/index.ts",
-        style: "./src/resources/scss/index.scss"
+        style: "./src/index.scss"
     },
     output: {
         path: dist,
@@ -21,7 +21,7 @@ module.exports = {
     },
     optimization: {
         runtimeChunk: "single",
-        noEmitOnErrors: true,
+        emitOnErrors: false,
         splitChunks: {
             chunks: "all",
             maxInitialRequests: Infinity,
@@ -88,17 +88,27 @@ module.exports = {
             {
                 test: /\.(s?css)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: true
+                        }
+                    },
                     {
                         loader: "css-loader",
                         options: {
-                            sourceMap: true
+                            sourceMap: true,
+                            importLoaders: 1
                         }
                     },
                     {
                         loader: "postcss-loader",
                         options: {
-                            plugins: () => [require("autoprefixer")]
+                            postcssOptions: {
+                                ident: "postcss",
+                                syntax: "postcss-scss",
+                                plugins: ["postcss-import", "tailwindcss", "autoprefixer"]
+                            }
                         }
                     },
                     {
@@ -112,13 +122,6 @@ module.exports = {
             {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                 loader: "@ngtools/webpack"
-            },
-            {
-                // This hides some deprecation warnings that Webpack throws
-                test: /[/\\]@angular[/\\]core[/\\].+\.js$/,
-                parser: {
-                    system: true
-                }
             },
             {
                 test: /\.html$/,
@@ -135,7 +138,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            verbose: true
+        }),
         new AngularCompilerPlugin({
             tsConfigPath: path.join(__dirname, "./tsconfig.json"),
             mainPath: path.join(__dirname, "./src/main.ts"),
@@ -145,8 +150,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: "resources/css/[name].[contenthash:8].css",
-            chunkFilename: "resources/css/[name].[contenthash:8].css",
-            esModule: true
+            chunkFilename: "resources/css/[name].[contenthash:8].css"
         }),
         new HtmlWebpackPlugin(htmlWebpackPluginConfig)
     ]
