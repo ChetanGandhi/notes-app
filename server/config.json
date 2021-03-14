@@ -1,4 +1,3 @@
 {
-    "port": 9876,
-    "contentBase": "../dist/notes-angular"
+    "port": 9876
 }
