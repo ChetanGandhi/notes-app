@@ -1,9 +1,11 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const htmlWebpackPluginConfig = require("./htmlTemplate.config");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { AngularCompilerPlugin } = require("@ngtools/webpack");
+const WebfontPlugin = require("webfont-webpack-plugin").default;
+const webfontPluginOptions = require("./iconfont.config");
 
 const dist = path.join(__dirname, "dist", "app");
 
@@ -62,7 +64,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                test: /\.(ttf|woff|woff2)$/,
                 use: [
                     {
                         loader: "file-loader",
@@ -99,6 +101,17 @@ module.exports = {
                         options: {
                             sourceMap: true,
                             importLoaders: 1
+                            // url: (url, resourcePath) => {
+                            //     // resourcePath - path to css file
+
+                            //     // Don't handle icon font urls, they need to be as it is.
+
+                            //     if (url.includes("/resources/icons/fonts")) {
+                            //         return false;
+                            //     }
+
+                            //     return true;
+                            // }
                         }
                     },
                     {
@@ -152,6 +165,7 @@ module.exports = {
             filename: "resources/css/[name].[contenthash:8].css",
             chunkFilename: "resources/css/[name].[contenthash:8].css"
         }),
-        new HtmlWebpackPlugin(htmlWebpackPluginConfig)
+        new HtmlWebpackPlugin(htmlWebpackPluginConfig),
+        new WebfontPlugin(webfontPluginOptions)
     ]
 };
