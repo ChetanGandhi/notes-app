@@ -4,8 +4,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const htmlWebpackPluginConfig = require("./htmlTemplate.config");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { AngularCompilerPlugin } = require("@ngtools/webpack");
-const WebfontPlugin = require("webfont-webpack-plugin").default;
-const webfontPluginOptions = require("./iconfont.config");
 
 const dist = path.join(__dirname, "dist", "app");
 
@@ -13,7 +11,8 @@ module.exports = {
     mode: "development",
     entry: {
         app: "./src/index.ts",
-        style: "./src/index.scss"
+        style: "./src/index.scss",
+        icons: "./iconfont.config.js"
     },
     output: {
         path: dist,
@@ -64,6 +63,25 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\iconfont\.config\.js/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            url: false,
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: "webfonts-loader",
+                        options: {
+                            publicPath: "/"
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.(ttf|woff|woff2)$/,
                 use: [
                     {
@@ -101,17 +119,6 @@ module.exports = {
                         options: {
                             sourceMap: true,
                             importLoaders: 1
-                            // url: (url, resourcePath) => {
-                            //     // resourcePath - path to css file
-
-                            //     // Don't handle icon font urls, they need to be as it is.
-
-                            //     if (url.includes("/resources/icons/fonts")) {
-                            //         return false;
-                            //     }
-
-                            //     return true;
-                            // }
                         }
                     },
                     {
@@ -165,7 +172,6 @@ module.exports = {
             filename: "resources/css/[name].[contenthash:8].css",
             chunkFilename: "resources/css/[name].[contenthash:8].css"
         }),
-        new HtmlWebpackPlugin(htmlWebpackPluginConfig),
-        new WebfontPlugin(webfontPluginOptions)
+        new HtmlWebpackPlugin(htmlWebpackPluginConfig)
     ]
 };

@@ -1,35 +1,34 @@
-const path = require("path");
-
 module.exports = {
     // All svg files to convert to icon.
-    files: [path.resolve(__dirname, "./src/resources/icons/*.svg"), path.resolve(__dirname, "./src/resources/logo/*.svg")],
+    files: ["./src/resources/icons/*.svg", "./src/resources/logo/*.svg"],
 
     // Target path where to save generated font and scss file.
-    dest: path.resolve(__dirname, "./src/resources/icons/fonts"),
-
-    // The base URL to be used in css to load the font file.
-    // This must match with the path specified in webpack config for fonts.
-    templateFontPath: "/resources/icons/fonts",
-
-    // The css class name.
-    templateClassName: "pn-icon",
+    dest: "/resources/fonts",
 
     // The font name i.e. font family.
     fontName: "PaperNoteIcon",
 
+    // The font file name format.
+    fileName: "[fontname].[chunkhash].[ext]",
+
+    // The css class prefix for all icons.
+    classPrefix: "paper-note-icon-",
+
+    // The css class name for all icons.
+    baseSelector: ".paper-note-icon",
+
     // Which fonts to generate.
-    formats: ["ttf", "woff", "woff2"],
+    types: ["ttf", "woff", "woff2"],
 
-    // Abort in case of error.
-    bail: true,
+    // The length of hash in file name, not working for chunkhash at the moment.
+    hashLength: 8,
 
-    // What kind of css to generate.
-    template: "scss",
+    // Enable font ligature, not working at the moment.
+    ligature: true,
 
     // Other options to be passed to svgicons2svgfont library.
     svgicons2svgfont: {
         centerHorizontally: true,
-        fontHeight: 16,
-        addAhashInFontUrl: true
+        fontHeight: 16
     }
 };
