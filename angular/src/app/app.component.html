@@ -1,15 +1,13 @@
-<div class="example-container">
-    <div>
-        <div class="d-flex flex-column overflow-hidden h-100 align-center justify-content-end p-2">
-            <button (click)="onToggleThemeButtonClick()">
-                <span class="paper-note-icon paper-note-icon-theme-switch"></span>
-            </button>
-            <button>
-                <span class="paper-note-icon paper-note-icon-logo"></span>
-            </button>
-        </div>
+<div class="flex overflow-hidden">
+    <div class="menu flex-shrink-0 justify-end p-2 m-2 shadow-lg bg-base-100 rounded-full">
+        <button class="btn btn-sm btn-circle mt-2" (click)="onToggleThemeButtonClick()">
+            <span class="paper-note-icon paper-note-icon-theme-switch"></span>
+        </button>
+
+        <button class="btn btn-primary btn-sm btn-circle mt-2">
+            <span class="paper-note-icon paper-note-icon-logo"></span>
+        </button>
     </div>
-    <div>
-        <paper-note class="container"></paper-note>
-    </div>
+
+    <paper-note class="container"></paper-note>
 </div>

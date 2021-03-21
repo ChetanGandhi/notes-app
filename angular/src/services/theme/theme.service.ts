@@ -1,6 +1,5 @@
 import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
-import { OverlayContainer } from "@angular/cdk/overlay";
 
 export const enum Theme {
     Light = "light",
@@ -15,22 +14,22 @@ export interface IThemeService {
     providedIn: "root"
 })
 export class ThemeService implements IThemeService {
-    private _currentTheme: Theme = Theme.Light;
+    private _theme: Theme = Theme.Light;
 
-    constructor(@Inject(DOCUMENT) private document: Document, @Inject(OverlayContainer) private overlayContainer: OverlayContainer) {}
+    constructor(@Inject(DOCUMENT) private document: Document) {}
 
     public get theme(): Theme {
-        return this._currentTheme;
+        return this._theme;
     }
 
     public set theme(theme: Theme) {
-        if (this._currentTheme) {
-            this.document.documentElement.classList.remove(this._currentTheme);
-            this.overlayContainer.getContainerElement().classList.remove(this._currentTheme);
+        if (this._theme) {
+            this.document.documentElement.removeAttribute("data-theme");
+            this.document.documentElement.classList.remove(this._theme);
         }
 
-        this._currentTheme = theme;
-        this.document.documentElement.classList.add(this._currentTheme);
-        this.overlayContainer.getContainerElement().classList.add(this._currentTheme);
+        this._theme = theme;
+        this.document.documentElement.setAttribute("data-theme", this._theme);
+        this.document.documentElement.classList.add(this._theme);
     }
 }

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<!-- data-theme="light" attribute is for daisyui themes and class="light" is for tailwind css. -->
+<!-- Although we will be using daisyui theme most of the time, tailwind theme is just for some edge case. -->
+<html lang="en-US" data-theme="light" class="light">
     <head>
         <title><%= htmlWebpackPlugin.options.title %></title>
         <!-- CSS will be injected by webpack here -->
     </head>
 
     <!-- This ensures that the proper theme background is applied to your page. -->
-    <body class="bg-gray-100 text-black dark:bg-gray-800 dark:text-white">
+    <body class="bg-base-200 text-base-content dark:bg-base-300">
         <main-app class="flex flex-grow h-screen w-screen overflow-hidden">
             <div class="flex flex-auto justify-center items-center">Loading...</div>
         </main-app>
