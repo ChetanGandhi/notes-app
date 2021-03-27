@@ -9,7 +9,9 @@ const daisyuiColors = require("daisyui/colors");
 module.exports = {
     purge: {
         content: ["./*.ejs", "./src/**/*.{html,js,ts,jsx,tsx}"],
-        safelist: [/data-theme$/]
+        options: {
+            safelist: [/data-theme$/]
+        }
     },
     darkMode: "class",
     theme: {

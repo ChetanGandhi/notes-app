@@ -8,7 +8,6 @@ const { AngularCompilerPlugin } = require("@ngtools/webpack");
 const dist = path.join(__dirname, "dist", "app");
 
 module.exports = {
-    mode: "development",
     entry: {
         app: "./src/index.ts",
         style: "./src/index.scss",
@@ -43,7 +42,6 @@ module.exports = {
             }
         }
     },
-    devtool: "source-map",
     stats: {
         all: false,
         builtAt: true,
@@ -55,7 +53,7 @@ module.exports = {
     },
     resolve: {
         // JS must be last else watch mode do not work
-        extensions: [".ts", ".scss", ".js"]
+        extensions: [".scss", ".ts", ".js"]
     },
     watchOptions: {
         ignored: /node_modules/
@@ -83,27 +81,17 @@ module.exports = {
             },
             {
                 test: /\.(ttf|woff|woff2)$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[contenthash:8].[ext]",
-                            outputPath: "resources/fonts"
-                        }
-                    }
-                ]
+                type: "asset/resource",
+                generator: {
+                    filename: "resources/fonts/[name].[contenthash:8].[ext]"
+                }
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[contenthash:8].[ext]",
-                            outputPath: "resources/images"
-                        }
-                    }
-                ]
+                type: "asset/resource",
+                generator: {
+                    filename: "resources/images/[name].[contenthash:8].[ext]"
+                }
             },
             {
                 test: /\.(s?css)$/,
@@ -118,7 +106,8 @@ module.exports = {
                         loader: "css-loader",
                         options: {
                             sourceMap: true,
-                            importLoaders: 1
+                            importLoaders: 1,
+                            esModule: true
                         }
                     },
                     {
