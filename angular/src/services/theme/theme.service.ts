@@ -6,14 +6,10 @@ export const enum Theme {
     Dark = "dark"
 }
 
-export interface IThemeService {
-    theme: Theme;
-}
-
 @Injectable({
     providedIn: "root"
 })
-export class ThemeService implements IThemeService {
+export class ThemeService {
     private _theme: Theme = Theme.Light;
 
     constructor(@Inject(DOCUMENT) private document: Document) {}

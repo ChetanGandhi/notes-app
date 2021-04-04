@@ -6,14 +6,12 @@ import { HttpClientModule } from "@angular/common/http";
 import "hammerjs";
 
 import { AppComponent } from "./app.component";
-import { ThemeService } from "../services/theme/theme.service";
-import { HomeComponent } from "../components/home/home.component";
-import { PaperNoteComponent } from "../components/paperNote/paperNote.component";
+import { HomeComponent, PaperNoteComponent } from "../components";
 
 @NgModule({
     imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule],
     declarations: [AppComponent, HomeComponent, PaperNoteComponent],
-    providers: [ThemeService],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

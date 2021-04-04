@@ -1,13 +1,12 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { Theme, IThemeService } from "../services/theme/theme.service";
-import { ThemeService } from "../services/theme/theme.service";
+import { ThemeService, Theme } from "../services/";
 
 @Component({
     selector: "main-app",
     templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
-    constructor(@Inject(ThemeService) private themeService: IThemeService) {}
+    constructor(@Inject(ThemeService) private themeService: ThemeService) {}
 
     public ngOnInit(): void {
         this.themeService.theme = Theme.Dark;
