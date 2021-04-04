@@ -7,11 +7,12 @@ import "hammerjs";
 
 import { AppComponent } from "./app.component";
 import { ThemeService } from "../services/theme/theme.service";
+import { HomeComponent } from "../components/home/home.component";
 import { PaperNoteComponent } from "../components/paperNote/paperNote.component";
 
 @NgModule({
     imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule],
-    declarations: [AppComponent, PaperNoteComponent],
+    declarations: [AppComponent, HomeComponent, PaperNoteComponent],
     providers: [ThemeService],
     bootstrap: [AppComponent]
 })
