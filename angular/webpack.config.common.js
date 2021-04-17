@@ -53,7 +53,7 @@ module.exports = {
     },
     resolve: {
         // JS must be last else watch mode do not work
-        extensions: [".scss", ".ts", ".js"]
+        extensions: [".css", ".scss", ".ts", ".js"]
     },
     watchOptions: {
         ignored: /node_modules/
